@@ -8,7 +8,7 @@ function MoviesFilter() {
 
     const searchMovies = async () => {
         try {
-            const response = await fetch('http://www.omdbapi.com/?s=${query}&apikey=YOUR_API_KEY');
+            const response = await fetch('http://www.omdbapi.com//?t=<string>&i=<string>&s=<string>&y=<integer>&type=<string>&plot=short&tomatoes=false&r=json&v=1&page=1&callback=<string>');
             const data = await response.json();
             if (data.Response === 'True') {
                 setMovies(data.Search);
@@ -33,11 +33,11 @@ function MoviesFilter() {
     };
 
     return (
-        <div>
+        <div className="search-box">
             <h2>Movies search</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" value={query} onChange={handleChange} placeholder="Type the name of the movie" />
-                <button type="submit">Search</button>
+                <button className="btn" type="submit">Search</button>
             </form>
             {error && <p>{error}</p>}
             <div>
